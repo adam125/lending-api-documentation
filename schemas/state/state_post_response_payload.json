@@ -39,9 +39,6 @@
         "code": {
           "type": "string"
         },
-        "title": {
-          "type": "string"
-        },
         "detail": {
           "type": "string"
         }
