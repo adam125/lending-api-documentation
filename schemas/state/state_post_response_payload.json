@@ -36,6 +36,9 @@
       "type": "object",
       "description": "Partial representation of an error as described in http://jsonapi.org/format/#errors",
       "properties": {
+        "status": {
+          "type": "string"
+        },
         "code": {
           "type": "string"
         },
