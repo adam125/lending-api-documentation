@@ -4,282 +4,46 @@
   "description": "The customer state endpoint",
   "type": "object",
   "properties": {
-    "people": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/person"
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": ["state_key"],
+            "properties": {
+              "state_key": {"type": "string"}
+            }
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": "errors",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
       }
-    },
-    "company": {
-      "$ref": "#/definitions/company"
-    },
-    "loan_request": {
-      "$ref": "#/definitions/loan_request"
-    },
-    "business_questions": {
-      "$ref": "#/definitions/business_questions"
-    },
-    "date_completed": {
-      "type": "string",
-      "format": "date-time",
-      "description": "Date with expected format YY-MM-DDTHH:MM:SS.mmmZ"
-    },
-    "bank_referral_scheme": {
-      "type": "object",
-      "description": "Free format for now"
-    },
-    "attribution": {
-      "$ref": "#/definitions/attribution"
-    }
+    ]
   },
   "definitions": {
-    "company": {
+    "error": {
       "type": "object",
+      "description": "Partial representation of an error as described in http://jsonapi.org/format/#errors",
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "ltd",
-            "st",
-            "op",
-            "llp",
-            "other"
-          ]
-        },
-        "trading_as": {
+        "code": {
           "type": "string"
-        },
-        "company_name": {
-          "type": "string"
-        },
-        "company_number": {
-          "type": "string"
-        },
-        "industry": {
-          "type": "string"
-        },
-        "annual_business_profit": {
-          "type": "number"
-        },
-        "annual_turnover": {
-          "type": "number"
-        },
-        "website": {
-          "type": "string",
-          "format": "uri"
-        },
-        "registered": {
-          "type": "string",
-          "description": "Datetime with expected format YY-MM-DDTHH:MM:SS.mmmZ"
-        },
-        "providers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              }
-            }
-          },
-          "vat_registered_status": {
-            "type": "bool"
-          },
-          "online_sales_percentage": {
-            "type": "integer"
-          },
-          "bank_account_number": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "person": {
-      "type": "object",
-      "properties": {
-        "uid": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string",
-          "format": "email"
-        },
-        "roles": {
-          "type": "string",
-          "enum": [
-            "shareholder",
-            "applicant",
-            "director",
-            "guarantor",
-            "other"
-          ]
         },
         "title": {
-          "type": "string",
-          "enum": [
-            "Mr",
-            "Ms",
-            "Mrs",
-            "Miss",
-            "Doctor",
-            "Professor",
-            "Sir",
-            "Lord",
-            "Lady",
-            "Baron",
-            "Baroness",
-            "Rev"
-          ]
-        },
-        "first_name": {
           "type": "string"
         },
-        "last_name": {
+        "detail": {
           "type": "string"
-        },
-        "date_of_birth": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date with expected format YY-MM-DD"
-        },
-        "phone": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "number": {
-                "type": "string"
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "main",
-                  "secondary"
-                ]
-              }
-            }
-          }
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/address"
-          }
-        },
-        "monthly_non_business_income": {
-          "type": "integer"
-        },
-        "other_monthly_expenses": {
-          "type": "integer"
-        },
-        "vat_number": {
-          "type": "string"
-        },
-        "marketing_emails": {
-          "type": "bool"
-        },
-        "privacy_policy_agreement_date": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Datetime with expected format YY-MM-DDTHH:MM:SS.mmmZ"
-        },
-        "privacy_policy": {
-          "type": "bool"
-        }
-      }
-    },
-    "address": {
-      "type": "object",
-      "properties": {
-        "uid": {
-          "type": "string"
-        },
-        "postcode": {
-          "type": "string"
-        },
-        "town": {
-          "type": "string"
-        },
-        "house_name": {
-          "type": "string"
-        },
-        "house_number": {
-          "type": "string"
-        },
-        "street_line_1": {
-          "type": "string"
-        },
-        "street_line_2": {
-          "type": "string"
-        },
-        "date_from": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date with expected format YY-MM-DD"
-        },
-        "residential_status": {
-          "type": "string",
-          "enum": [
-            "tenant",
-            "owner_with_mortgage",
-            "owner_no_mortgage",
-            "rent_free"
-          ]
-        },
-        "monthly_expenses": {
-          "type": "number"
-        }
-      }
-    },
-    "loan_request": {
-      "type": "object",
-      "properties": {
-        "amount": {
-          "type": "integer"
-        },
-        "purpose": {
-          "type": "string"
-        },
-        "urgency": {
-          "type": "string"
-        },
-        "detailed_reason": {
-          "type": "string"
-        },
-        "term": {
-          "type": "string",
-          "enum": [
-            "6m",
-            "12m"
-          ]
-        }
-      }
-    },
-    "business_questions": {
-      "type": "object",
-      "properties": {
-        "revenue_12m": {
-          "type": "integer"
-        },
-        "years_of_trading": {
-          "type": "integer"
-        },
-        "number_of_employees": {
-          "type": "integer"
-        }
-      }
-    },
-    "attribution": {
-      "type": "object",
-      "properties": {
-        "source": {
-          "type": "string"
-        },
-        "bank_referral_scheme": {
-          "type": "bool"
         }
       }
     }
