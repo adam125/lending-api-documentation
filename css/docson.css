@@ -172,11 +172,16 @@
 .docson .property-name {
     float: left;
     font-family: "Lucida Console", Monaco, monospace;
-    min-width: 130px;
+    min-width: 300px;
 }
 
 .docson .required {
     font-weight: bold;
+}
+
+.docson .required:after {
+    content: "*";
+    color: red;
 }
 
 .docson .type-keyword {
