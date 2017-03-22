@@ -125,7 +125,8 @@
     </script>
     <style>
         body {
-            font-family: verdana, helvetica;
+            font-family: Arial;
+            color: #4e4e4e;
         }
 
         #form {
@@ -142,15 +143,93 @@
             margin: 0px;
             padding: 0px;
         }
+        h1 {
+            background-color: #f7f7f7;
+            border-left: 5px solid #0075c9;
+            display: inline-block;
+            font-weight: normal;
+            width: calc(40% - 15px);
+            font-size: 30px;
+            padding: 5px 0px 5px 10px;
+        }
+        h2 {
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .panel {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            max-width: 40%;
+        }
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            color: #fff;
+            background-color: #0075c9;
+            border-color: #ddd;
+        }
+        .panel-body {
+            padding: 15px;
+        }
+
+        .panel-body a {
+            text-decoration: none;
+            border-bottom: 1px dashed black;
+            display: block;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            color: #0075c9;
+            text-decoration: none;
+        }
+
+        .panel-body a:hover {
+            color: #4e4e4e;
+            transition: 0.2s ease-in-out;
+            -webkit-transition: 0.2s ease-in-out;
+        }
+
+        .panel-body a span {
+            float: right;
+            font-size: 12px;
+            padding-top: 6px;
+        }
+
+        .default-link {
+            text-decoration: none;
+            color: #0075c9;
+            font-size: 14px;
+        }
+        .default-link:hover {
+            color: #4e4e4e;
+        }
+        .default-link span {
+            padding-right: 3px;
+            font-size: 10px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
-<a href="/lending-api-documentation/">API Overview</a>
+<a class="default-link" href="/lending-api-documentation/"><span>◀</span> Back to API Overview</a>
 <div id="form">
     <h1>State endpoint</h1>
-    <h2>POST</h2>
-    <p><a href="/lending-api-documentation/#schemas/state/state_post_request_payload.json">Request schema</a></p>
-    <p><a href="/lending-api-documentation/#schemas/state/state_post_response_payload.json">Response schema</a></p>
+    <div class="panel">
+        <div class="panel-heading">
+            <h2>POST</h2>
+        </div>
+        <div class="panel-body">
+            <a href="/lending-api-documentation/#schemas/state/state_post_request_payload.json">Request schema<span>▶</span></a>
+            <a href="/lending-api-documentation/#schemas/state/state_post_response_payload.json">Response schema<span>▶</span></a>
+        </div>
+    </div>
 
     <!-- Please enter a schema URL:
     <input type="text" id="url" size="60"> -->
